@@ -1,0 +1,30 @@
+@import '../../style/default.less';
+
+.links-container {
+  // font-size: @fontB;
+  .fontB;
+  color: @ColorB;
+
+  .links-group-title {
+    display: inline-block;
+    line-height: 32px;
+  }
+
+  .link-item {
+    color: @ColorB;
+
+    &:not(:first-child) {
+      position: relative;
+
+      & ::before {
+        position: absolute;
+        content: '';
+        width: 1px;
+        top: 25%;
+        bottom: 25%;
+        left: 0;
+        background-color: @ColorB;
+      }
+    }
+  }
+}

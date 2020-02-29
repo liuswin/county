@@ -1,0 +1,95 @@
+@import '../../style/default.less';
+
+.page-banner {
+  background: url('../../assets/images/banner_01.png') center 100%;
+
+  .carousel-container {
+    padding: 44px 23%;
+
+    .switch-btn {
+      position: absolute;
+      .px2rem(width, 80);
+      width: @value;
+    }
+
+    .ant-carousel .slick-slide {
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .ant-carousel .slick-slide h3 {
+      color: #fff;
+    }
+
+    .ant-carousel .slick-dots-bottom {
+      bottom: -20px;
+    }
+  }
+
+  .video-panel {
+    position: relative;
+    padding: 20px 45px;
+    background-color: @ColorC;
+
+    video {
+      position: relative;
+      z-index: 1;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: @ColorC;
+    }
+  }
+}
+
+.home-content {
+  .block-content-01 {
+    padding: 120px;
+    text-align: center;
+    background: url('../../assets/images/blockBG_01.png') bottom no-repeat;
+    background-size: 100% 100%;
+    // font-size: @fontF;
+    .fontF;
+  }
+
+  .county-title {
+    display: inline-block;
+    position: relative;
+    // font-size: @fontG;
+    .fontG;
+    color: @ColorD;
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      // width: 150px;
+      top: 50%;
+      border-top: 1px solid @ColorD;
+      .px2rem(width, 150);
+    }
+
+    &::before {
+      right: 130%;
+    }
+
+    &::after {
+      left: 130%;
+    }
+  }
+
+  .slogan {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .highlight {
+    color: @ColorD;
+  }
+}

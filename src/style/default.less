@@ -1,0 +1,40 @@
+@baseFontSize: 16;
+// px 转 rem
+.px2rem(@name, @px) {
+  @value: @px / @baseFontSize * 1rem;
+}
+
+@ColorA: #262626;
+@ColorB: #A2A4A5;
+@ColorC: rgba(230, 231, 234, 0.17);
+@ColorD: #1B63DA;
+
+
+.fontA {
+  .px2rem('font-size', 12);
+  font-size: @value;
+}
+.fontB {
+  .px2rem('font-size', 14);
+  font-size: @value;
+}
+.fontC {
+  .px2rem('font-size', 16);
+  font-size: @value;
+}
+.fontD {
+  .px2rem('font-size', 18);
+  font-size: @value;
+}
+.fontE {
+  .px2rem('font-size', 20);
+  font-size: @value;
+}
+.fontF {
+  .px2rem('font-size', 22);
+  font-size: @value;
+}
+.fontG {
+  .px2rem('font-size', 34);
+  font-size: @value;
+}
