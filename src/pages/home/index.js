@@ -1,43 +1,95 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, Carousel, Button } from 'antd';
+import Polygon from '../../component/Polygon';
 import './index.less';
+import { countyModules } from './moduleMenu';
 
 class HomePage extends Component {
-  renderCarouselItem() {
+  state = {
+    currentCarouselIdx: 0,
+  };
+  renderCarouselVedioItem() {
     //autoplay="autoplay" loop="loop"
     return (
-      <div className='video-panel'>
-        <video style={{width: '100%'}} controls="" id="banner-video"  autostart="true">
+      <div className="video-panel">
+        <video
+          ref="introduceVideo"
+          style={{ width: '100%' }}
+          controls
+          controlsList="noremote footbar nodownload noremoteplayback"
+          disablePictureInPicture={true}
+          id="banner-video"
+          loop="loop"
+          autostart="true"
+        >
           <source src="https://cdn.clgnews.com/video/site.mp4" type="video/mp4" />
         </video>
       </div>
-    )
+    );
+  }
+  renderCarouselModuleItem() {
+    return (
+      <div className="module-menu-panel">
+        <div className="menu-row-container">
+          {countyModules.map((module, i) => (
+            i < 3 && <Polygon key={module.id} title={module.title} desc={module.desc} />
+          ))}
+        </div>
+        <div className="menu-row-container">
+          {countyModules.map((module, i) => (
+            i > 2 && <Polygon key={module.id} title={module.title} desc={module.desc} />
+          ))}
+        </div>
+      </div>
+    );
+  }
+  handleSwitch(type) {
+    //
+    if (type === 'prev') {
+      this.refs.carousel.prev();
+    } else {
+      this.refs.carousel.next();
+    }
+  }
+  handleChange(current) {
+    this.setState({
+      currentCarouselIdx: current,
+    });
+    console.log(current);
+    // current === 1 ? console.log('ant-avata') : this.refs.introduceVideo.play();
+    // console.log(this.refs.introduceVideo);
+    // let a = this.refs.introduceVideo;
+    // // debugger
+    // console.log(a)
   }
   renderCarouselPanel() {
+    const { currentCarouselIdx } = this.state;
     return (
-      <div className='carousel-container'>
-        <Button className='switch-btn prev' shape='circle' icon='left'></Button>
-        <Button className='switch-btn next' shape='circle' icon='right'></Button>
-        <Carousel ref='carousel'>
-          {this.renderCarouselItem()}
-          <div>
-            <h3>2</h3>
-          </div>
+      <div className="carousel-container">
+        <Button className="switch-btn prev" shape="circle" icon="left" onClick={() => this.handleSwitch('prev')} disabled={currentCarouselIdx === 0}></Button>
+        <Button className="switch-btn next" shape="circle" icon="right" onClick={() => this.handleSwitch('next')}></Button>
+        <Carousel ref="carousel" afterChange={current => this.handleChange(current)}>
+          {this.renderCarouselVedioItem()}
+          {this.renderCarouselModuleItem()}
         </Carousel>
       </div>
-    )
+    );
   }
   renderHomeBlockContent() {
     return (
-      <div className='home-content'>
-        <div class="block-content-01">
-          <p className='county-title'>中国县域发展榜</p>
-          <p className='slogan'>展现中国实现全面小康的<span className='highlight'>辉煌成就</span></p>
-          <p className='slogan'><span className='highlight'>创建中国县域发展</span>的综合测评体系</p>
+      <div className="home-content">
+        <div className="block-content-01">
+          <p className="county-title">中国县域发展榜</p>
+          <p className="slogan">
+            展现中国实现全面小康的<span className="highlight">辉煌成就</span>
+          </p>
+          <p className="slogan">
+            <span className="highlight">创建中国县域发展</span>的综合测评体系
+          </p>
         </div>
       </div>
-    )
+    );
   }
   render() {
     return (
@@ -45,9 +97,7 @@ class HomePage extends Component {
         <Col className="page-banner" span={24}>
           {this.renderCarouselPanel()}
         </Col>
-        <Col span={24}>
-          {this.renderHomeBlockContent()}
-        </Col>
+        <Col span={24}>{this.renderHomeBlockContent()}</Col>
       </Row>
     );
   }

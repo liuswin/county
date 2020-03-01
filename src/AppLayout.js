@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Layout } from 'antd';
 import PrimaryRouter from './router/PrimaryRouter';
+import SiteHeader from './component/Header';
 import SiteFooter from './component/Footer';
 import './AppLayout.less';
 
@@ -11,7 +12,9 @@ class AppLayout extends Component {
   render() {
     return (
       <Layout>
-        <Header></Header>
+        <Header>
+          <SiteHeader />
+        </Header>
         <Content>
           <PrimaryRouter {...this.props}/>
         </Content>

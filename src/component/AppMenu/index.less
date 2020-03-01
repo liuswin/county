@@ -1,0 +1,53 @@
+@import '../../style/default.less';
+
+.menu-container {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 77px;
+  font-size: @fontD;
+
+  &::before {
+    position: absolute;
+    content: '';
+    height: 1px;
+    width: 150%;
+    background: @ColorG;
+    left: -25%;
+    top: -4px;
+  }
+
+  .ant-menu-item:first-child ::before {
+    position: absolute;
+    content: '';
+    width: 1px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: @ColorG;
+  }
+
+  &.ant-menu-horizontal .ant-menu-item-active,
+  &.ant-menu-horizontal .ant-menu-item-selected {
+    border-top: 4px solid @ColorD;
+    border-bottom: 2px solid @ColorF;
+    margin-top: -4px;
+  }
+
+  .ant-menu-item {
+    position: relative;
+    flex-grow: 1;
+    text-align: center;
+    padding: 1.5% 0;
+    &::after {
+      position: absolute;
+      content: '';
+      width: 1px;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      background: @ColorG;
+    }
+  }
+}

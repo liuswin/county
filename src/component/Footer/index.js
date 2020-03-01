@@ -9,7 +9,7 @@ export default class Footer extends Component {
   render() {
     return (
       <div className='footer-container'>
-        <div class='footer-menu'>
+        <div className='footer-menu'>
           <Link to='http://baidu.com'>关于我们</Link>
         </div>
         <LinkGroup title={friendlyLink.groupName} links={friendlyLink.sites} />
