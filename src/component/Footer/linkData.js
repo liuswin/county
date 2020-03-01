@@ -1,3 +1,26 @@
+export const footerMenu = [
+  {
+    id: 1,
+    name: '关于我们',
+    address: 'https://www.clgnews.com/tong'
+  },
+  {
+    id: 2,
+    name: '客服中心',
+    address: 'https://www.clgnews.com/tong'
+  },
+  {
+    id: 3,
+    name: '会员加盟',
+    address: 'https://www.clgnews.com/tong'
+  },
+  {
+    id: 4,
+    name: '招商合作',
+    address: 'https://www.clgnews.com/tong'
+  }
+];
+
 export const friendlyLink = {
   groupName: '友情链接',
   sites: [

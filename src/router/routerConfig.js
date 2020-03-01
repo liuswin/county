@@ -1,14 +1,20 @@
 import HomePage from '../pages/home';
+import HundredCounty from '../pages/hundred';
 
 const routes = [
   {
-    path: '/app',
+    path: '/',
     component: HomePage,
+    exact: true,
+  },
+  {
+    path: '/app',
+    component: HundredCounty,
     name: '百县榜',
     exact: true
   },
   {
-    path: '/age1',
+    path: '/channel',
     component: null,
     name: '郡县号'
   },

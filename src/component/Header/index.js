@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from 'antd';
 import AppMenu from '../AppMenu';
 import logo from '../../assets/images/logo.png';
@@ -20,7 +21,9 @@ export default class Header extends Component {
           </ButtonGroup>
         </div>
         <div className='header-slogan'>
-          <img className='logo' src={logo} alt="logo" />
+          <Link to='/'>
+            <img className='logo' src={logo} alt="logo" />
+          </Link>
           <div className='slogan'>
             {/* <div>郡县治 • 天下安</div>
             <div>

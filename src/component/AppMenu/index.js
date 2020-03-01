@@ -26,6 +26,7 @@ export default class AppMenu extends Component {
         {Menus
           // .filter(d => this.checkModuleP(appReducer.config.auth, d))
           .map((route, i) => {
+            if (route.path === '/') return; // 首页菜单不添加
             if (route.routes && route.routes.length > 0) {
               return (
                 <SubMenu

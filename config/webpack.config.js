@@ -130,7 +130,7 @@ module.exports = function(webpackEnv) {
           options: {
             modifyVars: {
               // 主题
-              'primary-color': ' #1890ff '
+              'primary-color': '#1B63DA'
             },
             javascriptEnabled: true
           }
@@ -484,7 +484,7 @@ module.exports = function(webpackEnv) {
             // using the extension .module.less
             {
               test: lessRegex,
-              exclude: lessModuleRegex,
+              // exclude: lessModuleRegex,
               use: getStyleLoaders({ importLoaders: 2 }, 'less-loader')
             },
             {

@@ -99,3 +99,27 @@
     }
   }
 }
+
+@media screen and (max-width: 1050px) {
+
+  .header-slogan {
+    .qrcode {
+      display: none;
+    }
+
+    .slogan {
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .header-slogan {
+    .logo {
+      display: none;
+    }
+  }
+}

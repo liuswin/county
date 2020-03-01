@@ -12,20 +12,10 @@
     position: absolute;
     content: '';
     height: 1px;
-    width: 150%;
+    width: 143%;
     background: @ColorG;
-    left: -25%;
+    left: -21.5%;
     top: -4px;
-  }
-
-  .ant-menu-item:first-child ::before {
-    position: absolute;
-    content: '';
-    width: 1px;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    background: @ColorG;
   }
 
   &.ant-menu-horizontal .ant-menu-item-active,
@@ -40,6 +30,9 @@
     flex-grow: 1;
     text-align: center;
     padding: 1.5% 0;
+    min-width: 90px;
+
+    &:nth-child(2)::before,
     &::after {
       position: absolute;
       content: '';
@@ -48,6 +41,11 @@
       bottom: 0;
       right: 0;
       background: @ColorG;
+    }
+
+    &:nth-child(2)::before {
+      right: unset;
+      left: 0;
     }
   }
 }

@@ -9,7 +9,7 @@ function App() {
     <Router>
       <Switch>
         <Route path='/auth' component={() => null} />
-        <AuthorizedRoute path='/app' component={AppLayout} />
+        <AuthorizedRoute path='/' component={AppLayout} />
         <Redirect to='/auth' />
       </Switch>
     </Router>

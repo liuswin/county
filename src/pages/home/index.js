@@ -8,13 +8,18 @@ import { countyModules } from './moduleMenu';
 class HomePage extends Component {
   state = {
     currentCarouselIdx: 0,
+    carouselCount: 0
   };
+  componentDidMount() {
+    this.setState({
+      carouselCount: this.refs.carousel.props.children.length
+    });
+  }
   renderCarouselVedioItem() {
     //autoplay="autoplay" loop="loop"
     return (
       <div className="video-panel">
         <video
-          ref="introduceVideo"
           style={{ width: '100%' }}
           controls
           controlsList="noremote footbar nodownload noremoteplayback"
@@ -56,19 +61,15 @@ class HomePage extends Component {
     this.setState({
       currentCarouselIdx: current,
     });
-    console.log(current);
-    // current === 1 ? console.log('ant-avata') : this.refs.introduceVideo.play();
-    // console.log(this.refs.introduceVideo);
-    // let a = this.refs.introduceVideo;
-    // // debugger
-    // console.log(a)
+    var videoDOM = document.querySelectorAll('.video-panel video')[0];
+    current === 1 ? videoDOM.pause() : videoDOM.play();
   }
   renderCarouselPanel() {
-    const { currentCarouselIdx } = this.state;
+    const { currentCarouselIdx, carouselCount } = this.state;
     return (
       <div className="carousel-container">
         <Button className="switch-btn prev" shape="circle" icon="left" onClick={() => this.handleSwitch('prev')} disabled={currentCarouselIdx === 0}></Button>
-        <Button className="switch-btn next" shape="circle" icon="right" onClick={() => this.handleSwitch('next')}></Button>
+        <Button className="switch-btn next" shape="circle" icon="right" onClick={() => this.handleSwitch('next')} disabled={currentCarouselIdx === carouselCount - 1}></Button>
         <Carousel ref="carousel" afterChange={current => this.handleChange(current)}>
           {this.renderCarouselVedioItem()}
           {this.renderCarouselModuleItem()}
