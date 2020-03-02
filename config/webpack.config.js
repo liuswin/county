@@ -123,21 +123,30 @@ module.exports = function(webpackEnv) {
           },
         }
       );
-      let loader = require.resolve(preProcessor);
-      if (preProcessor === 'less-loader') {
-        loader = {
-          loader,
-          options: {
-            modifyVars: {
-              // 主题
-              'primary-color': '#1B63DA'
-            },
-            javascriptEnabled: true
-          }
-        };
-      }
-      loaders.push(loader);
     }
+    if (preProcessor && preProcessor === 'less-loader') {
+      loaders.push(
+        {
+          loader: require.resolve('resolve-url-loader'),
+          options: {
+            sourceMap: isEnvProduction && shouldUseSourceMap,
+          },
+        },
+        {
+          loader: require.resolve(preProcessor),
+          options: {
+            sourceMap: true,
+            javascriptEnabled: true,
+            modifyVars: {
+              'primary-color': '#1B63DA',
+              'link-color': '#1B63DA',
+              // 'border-radius-base': '2px',
+            },
+          },
+        }
+      );
+    }
+
     return loaders;
   };
 
@@ -379,7 +388,7 @@ module.exports = function(webpackEnv) {
                     {
                       libraryName: 'antd',
                       libraryDirectory: 'es',
-                      style: 'css', // `style: true` 会加载 less 文件
+                      style: true, // `style: true` 会加载 less 文件
                     },
                   ],
                 ],
@@ -484,20 +493,27 @@ module.exports = function(webpackEnv) {
             // using the extension .module.less
             {
               test: lessRegex,
-              // exclude: lessModuleRegex,
-              use: getStyleLoaders({ importLoaders: 2 }, 'less-loader')
+              exclude: lessModuleRegex,
+              use: getStyleLoaders(
+                {
+                  importLoaders: 2,
+                  sourceMap: isEnvProduction && shouldUseSourceMap,
+                },
+                'less-loader'
+              ),
+              sideEffects: true,
             },
             {
               test: lessModuleRegex,
               use: getStyleLoaders(
                 {
                   importLoaders: 2,
-                  modules: {
-                    getLocalIdent: getCSSModuleLocalIdent
-                  }
+                  sourceMap: isEnvProduction && shouldUseSourceMap,
+                  modules: true,
+                  getLocalIdent: getCSSModuleLocalIdent,
                 },
                 'less-loader'
-              )
+              ),
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
