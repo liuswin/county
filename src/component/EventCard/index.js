@@ -42,7 +42,7 @@ export default class EventCard extends Component {
               placement="bottom"
               trigger='click'
               content={
-                <img src={voteQRCode} alt='vote' />
+                <img width='145px' src={voteQRCode} alt='vote' />
               }>
               <Button type='primary' size='small'style={buttonStyle} >我要投票</Button>
             </Popover>
