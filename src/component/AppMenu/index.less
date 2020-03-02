@@ -19,14 +19,19 @@
   }
 
   &.ant-menu-horizontal .ant-menu-item-active,
-  &.ant-menu-horizontal .ant-menu-item-selected {
+  &.ant-menu-horizontal .ant-menu-item-selected,
+  &.ant-menu-horizontal .ant-menu-submenu-active {
     border-top: 4px solid @ColorD;
     border-bottom: 2px solid @ColorF;
     margin-top: -4px;
   }
 
-  .ant-menu-item {
+  .ant-menu-item,
+  .ant-menu-submenu {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-grow: 1;
     text-align: center;
     padding: 1.5% 0;
