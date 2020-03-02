@@ -8,12 +8,14 @@ import './index.less';
 export default class Footer extends Component {
   render() {
     return (
-      <div className='footer-container'>
-        <div className='footer-menu'>
+      <div className="footer-container">
+        <div className="footer-menu">
           {/* <Link to='http://baidu.com'>关于我们</Link> */}
           <Button.Group>
             {footerMenu.map(menu => (
-              <Button key={menu.id} href={menu.address} target='_blank' ghost>{menu.name}</Button>
+              <Button type="primary" key={menu.id} href={menu.address} target="_blank" ghost>
+                {menu.name}
+              </Button>
             ))}
           </Button.Group>
         </div>

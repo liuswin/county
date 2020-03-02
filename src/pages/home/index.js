@@ -25,6 +25,7 @@ class HomePage extends Component {
           controlsList="noremote footbar nodownload noremoteplayback"
           disablePictureInPicture={true}
           id="banner-video"
+          autoPlay="autoplay"
           loop="loop"
           autostart="true"
         >
@@ -62,7 +63,7 @@ class HomePage extends Component {
       currentCarouselIdx: current,
     });
     var videoDOM = document.querySelectorAll('.video-panel video')[0];
-    current === 1 ? videoDOM.pause() : videoDOM.play();
+    current === 0 && videoDOM.paused ? videoDOM.play() : videoDOM.pause();
   }
   renderCarouselPanel() {
     const { currentCarouselIdx, carouselCount } = this.state;
