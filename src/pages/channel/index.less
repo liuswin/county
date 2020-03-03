@@ -1,0 +1,30 @@
+@import '../../style/default.less';
+
+.channel-container {
+  padding: 0 15%;
+
+  .video-list-container {
+
+    .ant-list-item {
+      flex-direction: row-reverse;
+      margin: 80px 0;
+      border-bottom: 0;
+      background-color: @ColorM;
+
+      .ant-list-item-main {
+        padding-left: 9%;
+
+        .ant-list-item-meta {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+  .video-component {
+    position: relative;
+    width: 300px;
+    transform: scale(1.4);
+    left: 20px;
+    border-radius: 4px;
+  }
+}
