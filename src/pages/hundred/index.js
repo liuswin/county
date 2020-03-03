@@ -4,7 +4,9 @@ import { Row, Col, Timeline, Button, Card, List, Form, Select, Breadcrumb } from
 import moment from 'moment';
 import EventCard from '../../component/EventCard';
 import QuickEntry from '../../component/QuickEntry';
+import Banner from '../../component/Banner';
 import './index.less';
+import banner_02 from '../../assets/images/banner_02.png';
 import entry_01 from '../../assets/images/entry_01.png';
 import entry_02 from '../../assets/images/entry_02.png';
 import entry_03 from '../../assets/images/entry_03.png';
@@ -33,16 +35,6 @@ const textColors = {
 };
 
 class HundredCounty extends Component {
-  renderBanner() {
-    return (
-      <div className="header-banner-container">
-        <div className="hundred-slogan">
-          <p>百县榜</p>
-          <p>中国县域发展榜</p>
-        </div>
-      </div>
-    );
-  }
   renderTimeLine() {
     return (
       <Card className="timeline-container">
@@ -97,14 +89,16 @@ class HundredCounty extends Component {
   render() {
     return (
       <Row className="hundred-county-container">
-        <Col span={24}>{this.renderBanner()}</Col>
+        <Col span={24}>
+          <Banner backgroundImage={banner_02} title="百县榜" desc="中国县域发展榜" />
+        </Col>
         <Col className="nav-container" span={24}>
           <Breadcrumb separator='>'>
             <BreadcrumbItem>
               <Link to="/">首页</Link>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <Link to="/">中国县域发展榜</Link>
+              <Link >中国县域发展榜</Link>
             </BreadcrumbItem>
           </Breadcrumb>
           <Button.Group>

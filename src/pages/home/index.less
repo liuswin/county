@@ -87,6 +87,7 @@
         position: relative;
         width: 120px;
         height: 135px;
+        transition: all 0.2s ease-in;
 
         .content {
           position: absolute;
@@ -145,5 +146,11 @@
 
   .highlight {
     color: @ColorD;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .polygon-container {
+    transform: scale(0.4, 0.2);
   }
 }

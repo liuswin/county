@@ -1,5 +1,7 @@
 import HomePage from '../pages/home';
 import HundredCounty from '../pages/hundred';
+import Channel from '../pages/channel';
+import Pass from '../pages/pass';
 
 const routes = [
   {
@@ -15,12 +17,12 @@ const routes = [
   },
   {
     path: '/channel',
-    component: null,
+    component: Channel,
     name: '郡县号'
   },
   {
-    path: '/age2',
-    component: null,
+    path: '/pass',
+    component: Pass,
     name: '郡县通'
   },
   {
