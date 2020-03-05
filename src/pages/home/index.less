@@ -43,8 +43,15 @@
 
   .video-panel {
     position: relative;
-    padding: 1.5% 3.5%;
+    padding: 1.8% 3.8%;
+    margin: 0 0.5%;
     background-color: @ColorC;
+    // transition: all 0.4s ease-in-out;
+
+    &.inactive {
+      // background-color: transparent;
+      // opacity: 0;
+    }
 
     video {
       position: relative;
@@ -58,7 +65,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background-color: @ColorC;
+      // background-color: @ColorC;
     }
   }
 

@@ -17,8 +17,9 @@ class HomePage extends Component {
   }
   renderCarouselVedioItem() {
     //autoplay="autoplay" loop="loop"
+    const { currentCarouselIdx } = this.state;
     return (
-      <div className="video-panel">
+      <div className={`video-panel ${currentCarouselIdx === 1 ? 'inactive' : ''}`}>
         <video
           style={{ width: '100%' }}
           controls

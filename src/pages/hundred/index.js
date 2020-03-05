@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Timeline, Button, Card, List, Form, Select, Breadcrumb } from 'antd';
+import { Row, Col, Timeline, Button, Card, List, Form, Select, Breadcrumb, Popover, Modal } from 'antd';
 import moment from 'moment';
 import EventCard from '../../component/EventCard';
 import QuickEntry from '../../component/QuickEntry';
@@ -15,6 +15,7 @@ import icon_news from '../../assets/images/icon_news.png';
 import icon_reports from '../../assets/images/icon_reports.png';
 import icon_sponsers from '../../assets/images/icon_sponsers.png';
 import { eventTimeLine as events } from './eventTimeLine';
+import voteQRCode from '../../assets/images/vote_qrcode.png';
 import { notices, news, reports, sponsers } from './listData';
 import { navMenu } from './linkData';
 
@@ -35,6 +36,25 @@ const textColors = {
 };
 
 class HundredCounty extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false
+    }
+  }
+  handleSearchClick = () => {
+    this.showModal();
+  }
+  showModal() {
+    this.setState({
+      visible: true
+    })
+  }
+  handleOK = () => {
+    this.setState({
+      visible: false
+    })
+  }
   renderTimeLine() {
     return (
       <Card className="timeline-container">
@@ -63,8 +83,11 @@ class HundredCounty extends Component {
             rules: [{ required: true, message: 'Please input your note!' }],
           })(
             <Select placeholder="选择县域" onChange={this.handleSelectChange}>
-              <Option value="male">male</Option>
-              <Option value="female">female</Option>
+              <Option value="1">2020中国县域电子商务百强榜</Option>
+              <Option value="2">2020中国礼仪百佳县市</Option>
+              <Option value="3">2020中国春季休闲百佳县市</Option>
+              <Option value="4">2020中国县域消费百强榜</Option>
+              <Option value="5">2020中国县域文化消费百强榜</Option>
             </Select>
           )}
         </Form.Item>
@@ -73,13 +96,14 @@ class HundredCounty extends Component {
             rules: [{ required: true, message: 'Please select your gender!' }],
           })(
             <Select placeholder="选择榜单" onChange={this.handleSelectChange}>
-              <Option value="male">male</Option>
-              <Option value="female">female</Option>
+              <Option value="1">130102 河北 石家庄市 长安区</Option>
+              <Option value="2">130104 河北 石家庄市 桥西区</Option>
+              <Option value="3">130105 河北 石家庄市 新华区</Option>
             </Select>
           )}
         </Form.Item>
         <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" onClick={this.handleSearchClick}>
             查询
           </Button>
         </Form.Item>
@@ -87,6 +111,7 @@ class HundredCounty extends Component {
     );
   }
   render() {
+    const { visible } = this.state;
     return (
       <Row className="hundred-county-container">
         <Col span={24}>
@@ -102,8 +127,15 @@ class HundredCounty extends Component {
             </BreadcrumbItem>
           </Breadcrumb>
           <Button.Group>
-            {navMenu.map(item => (
-              <Button key={item.id} href={item.address}>{item.name}</Button>
+            {navMenu.map((item, i) => (
+              i !== navMenu.length -1 ? <Button key={item.id} href={item.address}>{item.name}</Button> : (<Popover
+                placement="bottom"
+                trigger='click'
+                content={
+                  <img width='145px' src={voteQRCode} alt='vote' />
+                }>
+                <Button key={item.id} >{item.name}</Button>
+              </Popover>)
             ))}
           </Button.Group>
         </Col>
@@ -128,8 +160,8 @@ class HundredCounty extends Component {
             </Card>
             <Card
               className="list-card"
-              title={<span><span className='icon'><img src={icon_notices} alt="" /></span>榜单公告</span>}
-              extra={<Button type="link">更多</Button>}>
+              title={<span><span className='icon'><img src={icon_notices} alt="notices" /></span>榜单公告</span>}
+              extra={<Button type="link" href="https://www.clgnews.com/notice_list/1" >更多</Button>}>
               <List
                 size="small"
                 itemLayout="horizontal"
@@ -144,8 +176,8 @@ class HundredCounty extends Component {
             </Card>
             <Card
               className="list-card"
-              title={<span><span className='icon'><img src={icon_news} alt="" /></span>榜单新闻</span>}
-              extra={<Button type="link">更多</Button>}>
+              title={<span><span className='icon'><img src={icon_news} alt="news" /></span>榜单新闻</span>}
+              extra={<Button type="link" href="https://www.clgnews.com/news_list/bangdannews/1">更多</Button>}>
               <List
                 size="small"
                 itemLayout="horizontal"
@@ -160,8 +192,8 @@ class HundredCounty extends Component {
             </Card>
             <Card
               className="list-card"
-              title={<span><span className='icon'><img src={icon_reports} alt="" /></span>榜单报告</span>}
-              extra={<Button type="link">更多</Button>}>
+              title={<span><span className='icon'><img src={icon_reports} alt="report" /></span>榜单报告</span>}
+              extra={<Button type="link" href="https://www.clgnews.com/report_list/1" >更多</Button>}>
               <List
                 size="small"
                 itemLayout="horizontal"
@@ -176,8 +208,8 @@ class HundredCounty extends Component {
             </Card>
             <Card
               className="list-card"
-              title={<span><span className='icon'><img src={icon_sponsers} alt="" /></span>榜单冠名</span>}
-              extra={<Button type="link">更多</Button>}>
+              title={<span><span className='icon'><img src={icon_sponsers} alt="sponser" /></span>榜单冠名</span>}
+              extra={<Button type="link" href="https://www.clgnews.com/business_list/1" >更多</Button>}>
               <List
                 size="small"
                 itemLayout="horizontal"
@@ -192,6 +224,16 @@ class HundredCounty extends Component {
             </Card>
           </Col>
         </Row>
+        <Modal
+          title="提示"
+          okText="确定"
+          maskClosable
+          cancelText={false}
+          visible={visible}
+          onOk={this.handleOK}
+        >
+          <p>很遗憾没有入选！</p>
+        </Modal>
       </Row>
     );
   }

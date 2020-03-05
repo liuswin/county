@@ -5,7 +5,7 @@
   position: relative;
   justify-content: space-between;
   align-items: stretch;
-  height: 77px;
+  height: 55px;
   font-size: @fontD;
 
   &::before {
@@ -18,13 +18,22 @@
     top: -4px;
   }
 
-  &.ant-menu-horizontal .active,
+  &.ant-menu-horizontal .ant-menu-item,
   &.ant-menu-horizontal .ant-menu-item-active,
   &.ant-menu-horizontal .ant-menu-item-selected,
   &.ant-menu-horizontal .ant-menu-submenu-active {
-    border-top: 4px solid @ColorD;
     border-bottom: 2px solid @ColorF;
-    margin-top: -4px;
+
+    .active::after {
+      position: absolute;
+      content: '';
+      left: 0;
+      top: 0;
+      right: 0;
+      border-top: 4px solid @ColorD;
+      border-bottom: 2px solid @ColorF;
+      margin-top: -4px;
+    }
   }
 
   .ant-menu-item,
