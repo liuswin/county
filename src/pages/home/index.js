@@ -14,6 +14,9 @@ class HomePage extends Component {
     this.setState({
       carouselCount: this.refs.carousel.props.children.length
     });
+    var videoDOMs = document.querySelectorAll('.video-panel video');
+    // 防止复制的 video 也进行播放
+    !videoDOMs[1].paused && videoDOMs[1].pause();
   }
   renderCarouselVedioItem() {
     //autoplay="autoplay" loop="loop"
