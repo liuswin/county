@@ -62,8 +62,10 @@ class HomePage extends Component {
     this.setState({
       currentCarouselIdx: current,
     });
-    var videoDOM = document.querySelectorAll('.video-panel video')[0];
-    current === 0 && videoDOM.paused ? videoDOM.play() : videoDOM.pause();
+    var videoDOMs = document.querySelectorAll('.video-panel video');
+    current === 0 && videoDOMs[0].paused ? videoDOMs[0].play() : videoDOMs[0].pause();
+    // 防止复制的 video 也进行播放
+    !videoDOMs[1].paused && videoDOMs[1].pause();
   }
   renderCarouselPanel() {
     const { currentCarouselIdx, carouselCount } = this.state;

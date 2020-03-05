@@ -3,6 +3,14 @@
 .channel-container {
   padding: 0 15%;
 
+  .ant-input-search {
+    padding: 0 30px;
+
+    .ant-input-search-button {
+      padding: 0 25px;
+    }
+  }
+
   .video-list-container {
 
     .ant-list-item {
@@ -12,10 +20,17 @@
       background-color: @ColorM;
 
       .ant-list-item-main {
+        position: relative;
         padding-left: 9%;
+        padding-right: 2%;
 
         .ant-list-item-meta {
           margin-top: 20px;
+        }
+
+        .release-time {
+          position: absolute;
+          bottom: 10px;
         }
       }
     }

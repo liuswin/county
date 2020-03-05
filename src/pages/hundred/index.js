@@ -98,7 +98,7 @@ class HundredCounty extends Component {
               <Link to="/">首页</Link>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <Link >中国县域发展榜</Link>
+              <Link to="#">中国县域发展榜</Link>
             </BreadcrumbItem>
           </Breadcrumb>
           <Button.Group>

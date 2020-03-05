@@ -9,6 +9,32 @@ const SubMenu = Menu.SubMenu;
 export default class AppMenu extends Component {
   state = {
     current: 'mail',
+    openKeys: ['/'],
+    selectedKeys: ['/'],
+  };
+
+  getDefaultOpenKeys(path) {
+    let pathArray = path.split('/');
+    const selectedKeys = '/' + pathArray.slice(2).join('/');
+    let key = pathArray.splice(2, 1).join('/');
+    this.setState({
+      openKeys: ['/app/' + key],
+      selectedKeys: [selectedKeys],
+    });
+  }
+
+  onOpenChange = openKeys => {
+    const latestOpenKey = openKeys.find(
+      key => this.state.openKeys.indexOf(key) === -1
+    );
+    console.log(this.rootSubmenuKeys);
+    if (this.rootSubmenuKeys && this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+      this.setState({openKeys: [latestOpenKey]});
+    } else {
+      this.setState({
+        openKeys: latestOpenKey ? [latestOpenKey] : []
+      });
+    }
   };
 
   handleClick = e => {
@@ -21,8 +47,26 @@ export default class AppMenu extends Component {
   };
 
   render() {
+    // const {location} = this.props;
+    const location = window.location;
     return (
-      <Menu className='menu-container' onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
+      <Menu
+        className="menu-container"
+        defaultSelectedKeys={
+          Menus.map(item => {
+            if (location.pathname.includes(item.path)) {
+              console.log(item.path);
+              return item.path;
+            }
+          })
+          .filter(res => res !== undefined)
+        }
+        openKeys={this.state.openKeys}
+        onClick={this.handleClick}
+        onOpenChange={this.onOpenChange.bind(this)}
+        selectedKeys={[this.state.current]}
+        mode="horizontal"
+      >
         {Menus
           // .filter(d => this.checkModuleP(appReducer.config.auth, d))
           .map((route, i) => {
@@ -58,17 +102,15 @@ export default class AppMenu extends Component {
             } else {
               return (
                 <Menu.Item key={route.path}>
-                  {
-                    route.foreignSite
-                      ? (
-                        <a href={route.foreignSite.path} target='_blank'>{route.name}</a>
-                      )
-                      : (
-                        <NavLink to={{ pathname: route.path, state: { refresh: true } }}>
-                          {route.icon && <Icon type={route.icon} />} <span>{route.name}</span>
-                        </NavLink>
-                      )
-                  }
+                  {route.foreignSite ? (
+                    <a href={route.foreignSite.path} target="_blank">
+                      {route.name}
+                    </a>
+                  ) : (
+                    <NavLink to={{ pathname: route.path, state: { refresh: true } }}>
+                      {route.icon && <Icon type={route.icon} />} <span>{route.name}</span>
+                    </NavLink>
+                  )}
                 </Menu.Item>
               );
             }
