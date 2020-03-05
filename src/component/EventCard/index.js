@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Button, Popover } from 'antd';
 import moment from 'moment';
+import { monthFormater } from '../../utils';
 import './index.less';
 import voteQRCode from '../../assets/images/vote_qrcode.png';
 
@@ -14,7 +15,7 @@ export default class EventCard extends Component {
     }
     return (
       <div className={`header-container ${event.process}`} style={cardStyle}>
-        <span>{event.month}</span>
+        <span>{monthFormater(event.month)}</span>
         <p>{event.name}</p>
         <p>发布时间：{moment(event.time).format('YYYY.MM.DD')}</p>
       </div>
@@ -32,8 +33,8 @@ export default class EventCard extends Component {
           process === 'voted'
           ? (
             <Button.Group>
-              <Button type='primary' size='small' style={buttonStyle} >十强榜</Button>
-              <Button type='primary' size='small' style={buttonStyle} ghost>百强榜</Button>
+              <Button type='primary' size='small' style={buttonStyle} href="https://www.clgnews.com/report/detail/5e2264a591035c430d6edfc4/#px10" >十强榜</Button>
+              <Button type='primary' size='small' style={buttonStyle} href="https://www.clgnews.com/report/detail/5e2264a591035c430d6edfac/#px100" ghost>百强榜</Button>
             </Button.Group>
           )
           : process === 'voting'
@@ -55,7 +56,7 @@ export default class EventCard extends Component {
     )
   }
   render() {
-    const { icon, event = {} } = this.props;
+    const { event = {} } = this.props;
     return (
       <Card
         className='event-card-container'
@@ -63,7 +64,7 @@ export default class EventCard extends Component {
         cover={this.renderCardHeader()}
       >
         <div className='sponser-info'>
-          {icon && <img src={icon} alt='logo' />}
+          {event.icon && <img src={event.icon} alt='logo' />}
           <span>{event.sponser}</span>
         </div>
         {this.renderOption()}

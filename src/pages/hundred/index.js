@@ -50,11 +50,11 @@ class HundredCounty extends Component {
       visible: true
     })
   }
-  handleOK = () => {
+  hideModal = () => {
     this.setState({
-      visible: false
-    })
-  }
+      visible: false,
+    });
+  };
   renderTimeLine() {
     return (
       <Card className="timeline-container">
@@ -118,7 +118,7 @@ class HundredCounty extends Component {
           <Banner backgroundImage={banner_02} title="百县榜" desc="中国县域发展榜" />
         </Col>
         <Col className="nav-container" span={24}>
-          <Breadcrumb separator='>'>
+          <Breadcrumb separator=">">
             <BreadcrumbItem>
               <Link to="/">首页</Link>
             </BreadcrumbItem>
@@ -127,24 +127,25 @@ class HundredCounty extends Component {
             </BreadcrumbItem>
           </Breadcrumb>
           <Button.Group>
-            {navMenu.map((item, i) => (
-              i !== navMenu.length -1 ? <Button key={item.id} href={item.address}>{item.name}</Button> : (<Popover
-                placement="bottom"
-                trigger='click'
-                content={
-                  <img width='145px' src={voteQRCode} alt='vote' />
-                }>
-                <Button key={item.id} >{item.name}</Button>
-              </Popover>)
-            ))}
+            {navMenu.map((item, i) =>
+              i !== navMenu.length - 1 ? (
+                <Button key={item.id} href={item.address}>
+                  {item.name}
+                </Button>
+              ) : (
+                <Popover key={item.id} placement="bottom" trigger="click" content={<img width="145px" src={voteQRCode} alt="vote" />}>
+                  <Button>{item.name}</Button>
+                </Popover>
+              )
+            )}
           </Button.Group>
         </Col>
         <Row gutter={20}>
           <Col xs={24} xl={10}>
             {this.renderTimeLine()}
-            <QuickEntry entryDesc="2020中国县域发展榜" entryName="榜单发布总表" background={entry_01} />
-            <QuickEntry entryDesc="2020中国县域发展榜" entryName="参榜申报专区" background={entry_02} />
-            <QuickEntry entryDesc="2020中国县域发展榜" entryName="课题组" background={entry_03} />
+            <QuickEntry entryDesc="2020中国县域发展榜" entryName="榜单发布总表" background={entry_01} styleConfig={{color: '#FFFFFF', btnBackground: '', btnColor: '#FFFFFF'}}/>
+            <QuickEntry entryDesc="2020中国县域发展榜" entryName="参榜申报专区" background={entry_02} styleConfig={{color: '#4C61CA', btnBackground: '#FFFFFF', btnColor: '#4C61CA'}}/>
+            <QuickEntry entryDesc="2020中国县域发展榜" entryName="课题组" background={entry_03} styleConfig={{color: '#2B61AD', btnBackground: '#2B61AD', btnColor: '#FFFFFF'}}/>
           </Col>
           <Col xs={24} xl={14}>
             <Card
@@ -160,8 +161,20 @@ class HundredCounty extends Component {
             </Card>
             <Card
               className="list-card"
-              title={<span><span className='icon'><img src={icon_notices} alt="notices" /></span>榜单公告</span>}
-              extra={<Button type="link" href="https://www.clgnews.com/notice_list/1" >更多</Button>}>
+              title={
+                <span>
+                  <span className="icon">
+                    <img src={icon_notices} alt="notices" />
+                  </span>
+                  榜单公告
+                </span>
+              }
+              extra={
+                <Button type="link" href="https://www.clgnews.com/notice_list/1">
+                  更多
+                </Button>
+              }
+            >
               <List
                 size="small"
                 itemLayout="horizontal"
@@ -176,8 +189,20 @@ class HundredCounty extends Component {
             </Card>
             <Card
               className="list-card"
-              title={<span><span className='icon'><img src={icon_news} alt="news" /></span>榜单新闻</span>}
-              extra={<Button type="link" href="https://www.clgnews.com/news_list/bangdannews/1">更多</Button>}>
+              title={
+                <span>
+                  <span className="icon">
+                    <img src={icon_news} alt="news" />
+                  </span>
+                  榜单新闻
+                </span>
+              }
+              extra={
+                <Button type="link" href="https://www.clgnews.com/news_list/bangdannews/1">
+                  更多
+                </Button>
+              }
+            >
               <List
                 size="small"
                 itemLayout="horizontal"
@@ -192,8 +217,20 @@ class HundredCounty extends Component {
             </Card>
             <Card
               className="list-card"
-              title={<span><span className='icon'><img src={icon_reports} alt="report" /></span>榜单报告</span>}
-              extra={<Button type="link" href="https://www.clgnews.com/report_list/1" >更多</Button>}>
+              title={
+                <span>
+                  <span className="icon">
+                    <img src={icon_reports} alt="report" />
+                  </span>
+                  榜单报告
+                </span>
+              }
+              extra={
+                <Button type="link" href="https://www.clgnews.com/report_list/1">
+                  更多
+                </Button>
+              }
+            >
               <List
                 size="small"
                 itemLayout="horizontal"
@@ -208,8 +245,20 @@ class HundredCounty extends Component {
             </Card>
             <Card
               className="list-card"
-              title={<span><span className='icon'><img src={icon_sponsers} alt="sponser" /></span>榜单冠名</span>}
-              extra={<Button type="link" href="https://www.clgnews.com/business_list/1" >更多</Button>}>
+              title={
+                <span>
+                  <span className="icon">
+                    <img src={icon_sponsers} alt="sponser" />
+                  </span>
+                  榜单冠名
+                </span>
+              }
+              extra={
+                <Button type="link" href="https://www.clgnews.com/business_list/1">
+                  更多
+                </Button>
+              }
+            >
               <List
                 size="small"
                 itemLayout="horizontal"
@@ -227,10 +276,12 @@ class HundredCounty extends Component {
         <Modal
           title="提示"
           okText="确定"
-          maskClosable
-          cancelText={false}
           visible={visible}
-          onOk={this.handleOK}
+          onOk={this.hideModal}
+          onCancel={this.hideModal}
+          footer={[
+            <Button key="submit" type="primary" onClick={this.hideModal}>确定</Button>
+          ]}
         >
           <p>很遗憾没有入选！</p>
         </Modal>

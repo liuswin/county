@@ -6,7 +6,12 @@
   .header-container {
     position: relative;
     padding: 8px 0;
+    border-radius: 5px 5px 0 0;
     // overflow: hidden;
+
+    span {
+      padding: 0 10px;
+    }
 
     &::after {
       position: absolute;
@@ -53,24 +58,34 @@
   }
 
   .sponser-info {
+    display: flex;
+    justify-content: center;
     text-align: center;
     color: @ColorH;
     margin-bottom: 8px;
+
+    img {
+      height: 25px;
+      padding: 0 5px;
+    }
+    span:last-child {
+      line-height: 25px;
+    }
   }
 
   .option-container {
     text-align:center;
     white-space: nowrap;
 
-    button {
+    .ant-btn {
       max-width: 80px;
       border-radius: 3px;
       font-size: @fontB;
     }
 
     .ant-btn-group {
-      button:first-child {
-        margin-right: 15px;
+      .ant-btn:first-child {
+        margin-right: 10px;
       }
     }
   }

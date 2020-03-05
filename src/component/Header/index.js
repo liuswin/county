@@ -14,10 +14,10 @@ export default class Header extends Component {
     return (
       <React.Fragment>
         <div className='user-state-control'>
-          <div>郡县网欢迎您！WWW.CLGNEWS.COM</div>
+          <div>郡县网欢迎您！www.clgnews.com</div>
           <ButtonGroup>
-            <Button className='state-control-btn' size='small' ghost>登录</Button>
-            <Button className='state-control-btn' size='small' ghost>注册</Button>
+            <Button className='state-control-btn' size='small' href="https://www.clgnews.com/login" ghost>登录</Button>
+            <Button className='state-control-btn' size='small' href="https://www.clgnews.com/register" ghost>注册</Button>
           </ButtonGroup>
         </div>
         <div className='header-slogan'>
