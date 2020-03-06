@@ -38,6 +38,22 @@
 
     .ant-carousel .slick-dots-bottom {
       bottom: -20px;
+
+      li {
+        padding: 0 10px;
+
+        button {
+          width: 45px;
+          height: 6px;
+          border: 1px solid @ColorD;
+        }
+
+        &.slick-active {
+          button {
+            background: @ColorD;
+          }
+        }
+      }
     }
   }
 
@@ -92,13 +108,16 @@
 
       .polygon-container {
         position: relative;
-        width: 120px;
-        height: 135px;
+        width: 140px;
+        height: 155px;
         transition: all 0.2s ease-in;
 
         .content {
           position: absolute;
-          transform: translate(-50%, 50%);
+          left: 0;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
         }
 
         &:hover {
