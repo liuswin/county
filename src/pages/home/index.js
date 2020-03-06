@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Row, Col, Carousel, Button } from 'antd';
 import Polygon from '../../component/Polygon';
+import FloatingImage from '../../component/FloatingImage';
 import './index.less';
 import { countyModules } from './moduleMenu';
 
@@ -16,7 +18,7 @@ class HomePage extends Component {
     });
     var videoDOMs = document.querySelectorAll('.video-panel video');
     // 防止复制的 video 也进行播放
-    !videoDOMs[1].paused && videoDOMs[1].pause();
+    videoDOMs[1].innerHTML = "";
   }
   renderCarouselVedioItem() {
     //autoplay="autoplay" loop="loop"
@@ -42,14 +44,45 @@ class HomePage extends Component {
     return (
       <div className="module-menu-panel">
         <div className="menu-row-container">
-          {countyModules.map((module, i) => (
-            i < 3 && <Polygon key={module.id} title={module.title} desc={module.desc} />
-          ))}
+          {/* {countyModules.map((module, i) => (
+                  i < 3 && <Polygon key={module.id} title={module.title} desc={module.desc} path={module.path ? module.path : (module.foreignSite.path ? module.foreignSite.path : '')} />
+                ))} */}
+          {countyModules.map((module, i) => {
+            if (i < 3) {
+              if (module.path) {
+                return (
+                  <Link to={module.path}>
+                    <Polygon key={module.id} title={module.title} desc={module.desc} />
+                  </Link>
+                );
+              } else {
+                return (
+                  <a href={module.foreignSite.path ? module.foreignSite.path : '#'}>
+                    <Polygon key={module.id} title={module.title} desc={module.desc} />
+                  </a>
+                );
+              }
+            }
+          })}
         </div>
         <div className="menu-row-container">
-          {countyModules.map((module, i) => (
-            i > 2 && <Polygon key={module.id} title={module.title} desc={module.desc} />
-          ))}
+          {countyModules.map((module, i) => {
+            if (i > 2) {
+              if (module.path) {
+                return (
+                  <Link to={module.path}>
+                    <Polygon key={module.id} title={module.title} desc={module.desc} />
+                  </Link>
+                );
+              } else {
+                return (
+                  <a href={module.foreignSite.path ? module.foreignSite.path : '#'}>
+                    <Polygon key={module.id} title={module.title} desc={module.desc} />
+                  </a>
+                );
+              }
+            }
+          })}
         </div>
       </div>
     );
@@ -100,9 +133,17 @@ class HomePage extends Component {
     );
   }
   render() {
+    const { currentCarouselIdx } = this.state;
     return (
       <Row>
         <Col className="page-banner" span={24}>
+          <div className="float-image-container">
+            <FloatingImage className={`${currentCarouselIdx === 1 && ' show-floating-image '}`} position={['20%', '260px']} delay="0.1s" />
+            <FloatingImage className={`${currentCarouselIdx === 1 && ' show-floating-image '}`} position={['40%', '40px']} size="small" delay="0.2s" />
+            <FloatingImage className={`${currentCarouselIdx === 1 && ' show-floating-image '}`} position={['60%', '450px']} size="small" delay="0.1s" />
+            <FloatingImage className={`${currentCarouselIdx === 1 && ' show-floating-image '}`} position={['75%', '80px']} size="small" delay="0s" />
+            <FloatingImage className={`${currentCarouselIdx === 1 && ' show-floating-image '}`} position={['75.8%', '84px']} delay="0.1s" />
+          </div>
           {this.renderCarouselPanel()}
         </Col>
         <Col span={24}>{this.renderHomeBlockContent()}</Col>

@@ -23,8 +23,29 @@
   &.ant-menu-horizontal .ant-menu-item-selected,
   &.ant-menu-horizontal .ant-menu-submenu-active {
     border-bottom: 2px solid @ColorF;
-
+    a {
+      color: @ColorN;
+    }
+    .active {
+      color: @ColorD;
+    }
     .active::after {
+      position: absolute;
+      content: '';
+      left: 0;
+      top: 0;
+      right: 0;
+      border-top: 4px solid @ColorD;
+      border-bottom: 2px solid @ColorF;
+      margin-top: -4px;
+    }
+  }
+
+  &.ant-menu-horizontal .ant-menu-item-active {
+    a {
+      color: @ColorD;
+    }
+    a::after {
       position: absolute;
       content: '';
       left: 0;

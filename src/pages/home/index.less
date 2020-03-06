@@ -18,12 +18,15 @@
       color: @ColorE;
       top: 50%;
       transform: translateY(-50%);
+      padding-bottom: 5px;
 
       &.prev {
         left: 10%;
+        padding-right: 2px;
       }
       &.next {
         right: 10%;
+        padding-left: 2px;
       }
     }
 
@@ -87,6 +90,7 @@
 
   .module-menu-panel {
     display: flex;
+    position: relative;
     flex-direction: row-reverse;
     justify-content: space-around;
     padding: 6%;
@@ -122,6 +126,14 @@
 
         &:hover {
           transform: scale(1.1);
+        }
+      }
+    }
+
+    .menu-row-container:last-child {
+      .polygon-container:last-child {
+        .title {
+          font-size: @fontN;
         }
       }
     }
