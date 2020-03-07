@@ -55,7 +55,6 @@ export default class AppMenu extends Component {
         defaultSelectedKeys={
           Menus.map(item => {
             if (location.pathname.includes(item.path)) {
-              console.log(item.path);
               return item.path;
             }
           })
@@ -103,7 +102,7 @@ export default class AppMenu extends Component {
               return (
                 <Menu.Item key={route.path}>
                   {route.foreignSite ? (
-                    <a href={route.foreignSite.path} target="_blank">
+                    <a href={route.foreignSite.path} target="_blank" rel="noopener noreferrer" >
                       {route.name}
                     </a>
                   ) : (
