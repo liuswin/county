@@ -98,11 +98,21 @@
         width: 100px;
         height: 100px;
         background: linear-gradient(180deg, rgba(241,240,245,0.2) 0%, rgba(57,177,236,1) 0%, rgba(35,96,245,1) 100%, rgba(241,244,245,0.2) 100%);
-        border: 5px solid rgba(184, 219, 254, 0.6);
+        border: 5px solid rgba(184, 219, 254, 0.9);
         border-radius: 100px;
         color: @ColorF;
         transition: all 0.2s ease-in;
         overflow: hidden;
+        // z-index: 1;
+
+        // &::before {
+        //   position: absolute;
+        //   content: '';
+        //   width: 105px;
+        //   height: 105px;
+        //   background-color: rgba(184, 219, 254, 0.6);
+        //   z-index: 2;
+        // }
 
         &.pass-menu-active {
           transform: scale(1.2);

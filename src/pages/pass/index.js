@@ -21,7 +21,7 @@ export default class Channel extends Component {
     return (
       <React.Fragment>
         {passMenus.map(menu => (
-          <div className={`pass-menu-item ${menu.id === passMenus.length && 'pass-menu-active'}`} key={menu.id} onMouseEnter={e => this.handleEnter(e)} onMouseLeave={e => this.handleLeave(e)}>
+          <div className={`pass-menu-item ${menu.id === passMenus.length ? 'pass-menu-active' : ''}`} key={menu.id} onMouseEnter={e => this.handleEnter(e)} onMouseLeave={e => this.handleLeave(e)}>
             <p>{menu.title}</p>
             <p>{menu.desc}</p>
           </div>
