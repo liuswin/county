@@ -4,7 +4,8 @@ import './index.less';
 export default class LineWave extends Component {
   state = {
     xs: [],
-    t: 0
+    t: 0,
+    animationId: null
   }
   componentDidMount(){
     let points = [];
@@ -15,6 +16,11 @@ export default class LineWave extends Component {
       xs: points
     })
     this.lineAnimate();
+  }
+
+  componentWillUnmount() {
+    const { animationId } = this.state;
+    cancelAnimationFrame(animationId);
   }
 
   lineAnimate = () => {
@@ -31,7 +37,10 @@ export default class LineWave extends Component {
       return p[0] + ',' + p[1]
     }).join(' L')
 
-    points.length && document.querySelector(`#${id} path`).setAttribute('d', path)
+    if (points.length && document.querySelector(`#${id} path`)) {
+      document.querySelector(`#${id} path`).setAttribute('d', path);
+    }
+    // points.length && document.querySelector(`#${id} path`).setAttribute('d', path)
 
     this.setState({t: t + speed});
 

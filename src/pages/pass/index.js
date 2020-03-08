@@ -11,7 +11,10 @@ const { Search } = Input;
 
 export default class Channel extends Component {
   handleEnter = (e) => {
-    console.log(e.currentTarget)
+    // 预检测初始化放大的 menu
+    if (document.querySelector('.pass-menu-item:nth-child(8)').hasAttribute('class', 'pass-menu-active')) {
+      document.querySelector('.pass-menu-item:nth-child(8)').classList.remove('pass-menu-active');
+    }
     e.currentTarget.classList.add('pass-menu-active');
   }
   handleLeave = (e) => {
@@ -40,7 +43,9 @@ export default class Channel extends Component {
             <p className="module-name">郡县通</p>
           </div>
           <div className="module-body">
-            <p>     "郡县通"平台是面向县域推出的数字资讯技术产品服务平台。“郡县通”产品和服务包括：政会通智能会务系统、政网哨舆情预警系统、政讯报郡县政务参考、微讯社郡县新闻资讯门户、圆点直播政经民生视频直播、卡乐图片原创图像影音数据库、郡县云桥县域融媒采集编播系统等，更多产品与服务，将顺应县域政务发展需求而继续推出。</p>
+            <p>
+              "郡县通"平台是面向县域推出的数字资讯技术产品服务平台。“郡县通”产品和服务包括：政会通智能会务系统、政网哨舆情预警系统、政讯报郡县政务参考、微讯社郡县新闻资讯门户、圆点直播政经民生视频直播、卡乐图片原创图像影音数据库、郡县云桥县域融媒采集编播系统等，更多产品与服务，将顺应县域政务发展需求而继续推出。
+            </p>
           </div>
         </div>
       </div>
@@ -59,9 +64,6 @@ export default class Channel extends Component {
         </Col>
         <LineWave id="line-one" length={90} amplitute={80} speed={2.5} />
         <LineWave id="line-two" length={85} amplitute={60} speed={1.3} />
-        {/* <Col span={24} class>
-          <Search placeholder="关键词搜索" onSearch={value => console.log(value)} enterButton size="large" />
-        </Col> */}
       </Row>
     );
   }
