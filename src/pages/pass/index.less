@@ -107,24 +107,23 @@
         &.pass-menu-active {
           transform: scale(1.2);
 
-          &::after {
+          &::before {
             position: absolute;
             content: '';
             background: url('../../assets/images/point-light.png') center no-repeat;
             background-size: cover;
-            width: 50px;
-            height: 40px;
-            left: 12px;
-            bottom: -30px;
-            opacity: 0.7;
-            box-shadow: 0 0 20px @ColorF;
-            border-radius: 30px;
+            width: 102%;
+            height: 102%;
+            left: -1%;
+            top: -1%;
           }
         }
 
         p {
+          position: relative;
           margin: 0;
           font-size: @fontA;
+          z-index: 1;
         }
 
         p:first-child {

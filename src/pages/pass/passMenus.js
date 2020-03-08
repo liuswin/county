@@ -1,12 +1,12 @@
 const passMenus = [
   {
     id: 1,
-    title: '政会通',
+    title: '金会通',
     desc: '智能会务系统'
   },
   {
     id: 2,
-    title: '政讯报',
+    title: '金讯报',
     desc: '郡县政务参考'
   },
   {
@@ -31,12 +31,12 @@ const passMenus = [
   },
   {
     id: 7,
-    title: '郡县云桥',
+    title: '金讯桥',
     desc: '县域资讯自助采集系统'
   },
   {
     id: 8,
-    title: '政网哨',
+    title: '金网哨',
     desc: '舆情预警系统'
   },
 ]
