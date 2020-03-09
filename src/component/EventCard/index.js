@@ -11,7 +11,7 @@ export default class EventCard extends Component {
     const { primaryColor, textColor, event = {} } = this.props;
     const cardStyle = {
       background: primaryColor,
-      color: textColor
+      color: textColor,
     }
     return (
       <div className={`header-container ${event.process}`} style={cardStyle}>

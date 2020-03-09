@@ -63,9 +63,9 @@ class HundredCounty extends Component {
             <TimeLineItem
               key={event.id}
               color={Colors[event.process]}
-              // dot={
-              //   <span style={{backgroundColor: 'red'}}></span>
-              // }
+              dot={
+                <span class="custom-dot" style={{backgroundColor: Colors[event.process]}}></span>
+              }
             >
               <EventCard primaryColor={Colors[event.process]} textColor={textColors[event.process]} event={event} />
             </TimeLineItem>

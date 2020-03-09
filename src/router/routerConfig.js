@@ -2,6 +2,7 @@ import HomePage from '../pages/home';
 import HundredCounty from '../pages/hundred';
 import Channel from '../pages/channel';
 import Pass from '../pages/pass';
+import Platform from '../pages/pass/platform';
 
 const routes = [
   {
@@ -23,7 +24,13 @@ const routes = [
   {
     path: '/pass',
     component: Pass,
-    name: '郡县通'
+    name: '郡县通',
+    // routes: [
+    //   {
+    //     path: '/platform',
+    //     component: Platform
+    //   }
+    // ]
   },
   {
     path: '/age3',

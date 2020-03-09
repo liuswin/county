@@ -51,14 +51,14 @@ class HomePage extends Component {
             if (i < 3) {
               if (module.path) {
                 return (
-                  <Link to={module.path}>
-                    <Polygon key={module.id} title={module.title} desc={module.desc} />
+                  <Link key={module.id} to={module.path}>
+                    <Polygon title={module.title} desc={module.desc} />
                   </Link>
                 );
               } else {
                 return (
-                  <a href={module.foreignSite.path ? module.foreignSite.path : '#'}>
-                    <Polygon key={module.id} title={module.title} desc={module.desc} />
+                  <a key={module.id} href={module.foreignSite.path ? module.foreignSite.path : '#'} target="_blank" rel="noopener noreferrer">
+                    <Polygon title={module.title} desc={module.desc} />
                   </a>
                 );
               }
@@ -70,14 +70,14 @@ class HomePage extends Component {
             if (i > 2) {
               if (module.path) {
                 return (
-                  <Link to={module.path}>
-                    <Polygon key={module.id} title={module.title} desc={module.desc} />
+                  <Link key={module.id} to={module.path}>
+                    <Polygon title={module.title} desc={module.desc} />
                   </Link>
                 );
               } else {
                 return (
-                  <a href={module.foreignSite.path ? module.foreignSite.path : '#'}>
-                    <Polygon key={module.id} title={module.title} desc={module.desc} />
+                  <a key={module.id} href={module.foreignSite.path ? module.foreignSite.path : '#'} target="_blank" rel="noopener noreferrer">
+                    <Polygon title={module.title} desc={module.desc} />
                   </a>
                 );
               }
