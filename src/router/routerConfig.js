@@ -27,7 +27,6 @@ const routes = [
     path: '/pass',
     component: PassRouter,
     name: '郡县通',
-    // exact: true,
     showSub: false,
     routes: [
       {

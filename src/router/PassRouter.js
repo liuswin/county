@@ -6,7 +6,6 @@ const PassRouter = (props) => (
   <React.Fragment>
     <div className='pass-router'>
       <Switch>
-        {console.log('pass routes', props.routes)}
         {props.routes.map((route, i) => route.show ? <RouteWithSubRoutes key={i} {...route} /> : '')}
       </Switch>
     </div>
