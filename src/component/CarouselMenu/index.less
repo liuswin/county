@@ -30,22 +30,34 @@
       text-align: center;
       border: 0;
 
-      &:hover {
-        .cover-image {
-          transform: scale(1.1);
+      &.ant-card-hoverable {
+        box-shadow: 0 0 @ColorF !important;
 
-          &::after {
-            position: absolute;
-            content: '';
-            width: 90%;
-            height: 90%;
-            left: 5%;
-            right: 5%;
-            top: 5%;
-            bottom: 5%;
-            border: 1px solid @ColorD;
-            border-radius: 200px;
-            // transform: translate(-45%);
+        &:hover {
+
+          .cover-image {
+            transform: scale(1.1);
+
+            &::after {
+              position: absolute;
+              content: '';
+              width: 90%;
+              height: 90%;
+              left: 5%;
+              right: 5%;
+              top: 5%;
+              bottom: 5%;
+              border: 1px solid @ColorD;
+              border-radius: 200px;
+              // transform: translate(-45%);
+            }
+          }
+
+          .nav-menu-btn {
+            border: 0;
+            background-color: @ColorD;
+            color: @ColorF;
+            box-shadow: 0 2px 5px @ColorD;
           }
         }
       }
@@ -65,6 +77,7 @@
       .nav-menu-btn {
         border-radius: 50px;
         background-color: @ColorI;
+        // padding: 0 10px;
 
         &:hover,
         &:focus {
@@ -80,7 +93,7 @@
       }
 
       .ant-card-body {
-        padding: 8%;
+        padding: 8% 0;
       }
     }
   }

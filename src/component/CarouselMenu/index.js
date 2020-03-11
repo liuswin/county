@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Carousel, List, Card, Button } from 'antd';
 import './index.less';
 
@@ -50,8 +51,17 @@ export default class CarouselMenu extends Component {
             dataSource={data}
             renderItem={item => (
               <List.Item>
-                <Card cover={<div className="cover-image" style={{ backgroundImage: `url(${item.icon})` }}></div>}>
-                  <Button className="nav-menu-btn">{item.title}</Button>
+                <Card hoverable cover={<div className="cover-image" style={{ backgroundImage: `url(${item.icon})` }}></div>}>
+                  {/* {item.path ? (
+                    <NavLink to={item.path}>
+                      <Button className="nav-menu-btn">{item.title}</Button>
+                    </NavLink>
+                  ) : (
+                    <Button className="nav-menu-btn">{item.title}</Button>
+                  )} */}
+                  <NavLink to={`/pass/platform/${item.id}`}>
+                    <Button className="nav-menu-btn">{item.title}</Button>
+                  </NavLink>
                 </Card>
               </List.Item>
             )}

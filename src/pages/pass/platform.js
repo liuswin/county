@@ -3,6 +3,7 @@ import { Row, Col, Input } from 'antd';
 import Banner from '../../component/Banner';
 import CarouselMenu from '../../component/CarouselMenu';
 import banner_04 from '../../assets/images/banner_04.png';
+import Article from '../../component/Article';
 import './index.less';
 import './platform.less';
 import { passMenus } from './passMenus';
@@ -60,6 +61,7 @@ export default class Platform extends Component {
         <Col span={24} className="pass-content-container">
           <CarouselMenu menus={passMenus} perPageCount={8} />
           <Search placeholder="关键词搜索" onSearch={value => console.log(value)} enterButton size="large" />
+          <Article />
         </Col>
       </Row>
     );
