@@ -24,7 +24,8 @@ export default class LineWave extends Component {
   }
 
   lineAnimate = () => {
-    const { xs, t } = this.state;
+    let animationId = null;
+    const  { xs, t } = this.state;
     const { length = 30, amplitute = 45, speed = 1, id } = this.props;
 
     let points = xs.map( x => {
@@ -44,7 +45,8 @@ export default class LineWave extends Component {
 
     this.setState({t: t + speed});
 
-    requestAnimationFrame(this.lineAnimate);
+    animationId = requestAnimationFrame(this.lineAnimate);
+    this.setState({ animationId });
   }
   render() {
     const { id } = this.props;

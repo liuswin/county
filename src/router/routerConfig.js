@@ -1,3 +1,4 @@
+import PassRouter from './PassRouter';
 import HomePage from '../pages/home';
 import HundredCounty from '../pages/hundred';
 import Channel from '../pages/channel';
@@ -9,12 +10,13 @@ const routes = [
     path: '/',
     component: HomePage,
     exact: true,
+    isShow: false,
   },
   {
     path: '/app',
     component: HundredCounty,
     name: '百县榜',
-    exact: true
+    // exact: true
   },
   {
     path: '/channel',
@@ -23,14 +25,23 @@ const routes = [
   },
   {
     path: '/pass',
-    component: Pass,
+    component: PassRouter,
     name: '郡县通',
-    // routes: [
-    //   {
-    //     path: '/platform',
-    //     component: Platform
-    //   }
-    // ]
+    exact: true,
+    showSub: false,
+    routes: [
+      {
+        path: '/pass',
+        component: Pass,
+        name: '郡县通',
+        exact: true
+      },
+      {
+        path: '/pass/platform/:id',
+        component: Platform,
+        name: '郡县通平台',
+      }
+    ]
   },
   {
     path: '/age3',

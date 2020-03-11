@@ -25,11 +25,6 @@ export default class Header extends Component {
             <img className='logo' src={logo} alt="logo" />
           </Link>
           <div className='slogan'>
-            {/* <div>郡县治 • 天下安</div>
-            <div>
-              <p>中国县域发展的<span className='highlight'>综合测评体系</span></p>
-              <p><span className='highlight'>中国小康网</span>旗下县域赋能平台</p>
-            </div> */}
             <img src={slogan} alt="郡县治 • 天下安" />
             <img className='qrcode' src={qrcode} alt="郡县二维码" />
           </div>

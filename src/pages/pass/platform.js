@@ -9,7 +9,7 @@ import { passMenus } from './passMenus';
 
 const { Search } = Input;
 
-export default class Channel extends Component {
+export default class Platform extends Component {
   handleEnter = (e) => {
     // 预检测初始化放大的 menu
     if (document.querySelector('.pass-menu-item:nth-child(8)').hasAttribute('class', 'pass-menu-active')) {
@@ -54,6 +54,7 @@ export default class Channel extends Component {
   render() {
     return (
       <Row className="pass-platform-container">
+        aaaaa
         <Col span={24}>
           <Banner backgroundImage={banner_04} title="郡县通" desc="县域民生产品中心" />
         </Col>

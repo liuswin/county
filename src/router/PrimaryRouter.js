@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import routes from './routerConfig';
 import { connect } from 'react-redux';
 import { Switch, withRouter } from 'react-router-dom';
-import RouteWithSubRoutes from './RouteDom';
+import RouteWithSubRoutes from './RouterDom';
 
 class PrimaryRouter extends Component {
   constructor() {

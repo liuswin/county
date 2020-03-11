@@ -64,7 +64,7 @@ class HundredCounty extends Component {
               key={event.id}
               color={Colors[event.process]}
               dot={
-                <span class="custom-dot" style={{backgroundColor: Colors[event.process]}}></span>
+                <span className="custom-dot" style={{backgroundColor: Colors[event.process]}}></span>
               }
             >
               <EventCard primaryColor={Colors[event.process]} textColor={textColors[event.process]} event={event} />

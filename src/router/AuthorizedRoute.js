@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 class AuthorizedRoute extends Component {
   render() {
     let { component: Component, logged, ...rest } = this.props;
+    // TODO: 默认为 true, 后期需要修改
     logged = true;
     return (
       <Route

@@ -21,6 +21,7 @@ export default class Channel extends Component {
   handleMouseEnter(ev) {
     var videoItem = ev.currentTarget;
     videoItem.childNodes[1].childNodes[0].play();
+
   }
   handleMouseLeave(ev) {
     var videoItem = ev.currentTarget;
