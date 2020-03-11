@@ -10,7 +10,7 @@ import { passMenus } from './passMenus';
 
 const { Search } = Input;
 
-export default class Channel extends Component {
+export default class Pass extends Component {
   handleEnter = (e) => {
     // 预检测初始化放大的 menu
     if (document.querySelector('.pass-menu-item:nth-child(8)').hasAttribute('class', 'pass-menu-active')) {
