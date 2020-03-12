@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  overflow-x: hidden;
+}
+
+/*滚动条整体样式*/
+::-webkit-scrollbar{
+  width: 10px;/*竖向滚动条的宽度*/
+  height: 0px;/*横向滚动条的高度*/
+}
+::-webkit-scrollbar-thumb{/*滚动条里面的小方块*/
+  background: rgba(102, 102, 102, 0.8);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-track{/*滚动条轨道的样式*/
+  background: rgba(204, 204, 204, 0);
+  border-radius: 8px;
+}

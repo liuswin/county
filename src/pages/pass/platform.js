@@ -21,37 +21,6 @@ export default class Platform extends Component {
   handleLeave = (e) => {
     e.currentTarget.classList.remove('pass-menu-active');
   }
-  // renderModuleMenu() {
-  //   return (
-  //     <React.Fragment>
-  //       {passMenus.map(menu => (
-  //         <div className={`pass-menu-item ${menu.id === passMenus.length ? 'pass-menu-active' : ''}`} key={menu.id} onMouseEnter={e => this.handleEnter(e)} onMouseLeave={e => this.handleLeave(e)}>
-  //           <p>{menu.title}</p>
-  //           <p>{menu.desc}</p>
-  //         </div>
-  //       ))}
-  //     </React.Fragment>
-  //   )
-  // }
-  // renderNavModule() {
-  //   return (
-  //     <div className="pass-nav-module">
-  //       {this.renderModuleMenu()}
-  //       <div className="module-content">
-  //         <div className="module-header">
-  //           <p className="module-title">关注民生  服务县域</p>
-  //           <p className="module-subtitle">PEOPLE'S LIVELIHOOD TO SERVE THE COUNTY</p>
-  //           <p className="module-name">郡县通</p>
-  //         </div>
-  //         <div className="module-body">
-  //           <p>
-  //             "郡县通"平台是面向县域推出的数字资讯技术产品服务平台。“郡县通”产品和服务包括：政会通智能会务系统、政网哨舆情预警系统、政讯报郡县政务参考、微讯社郡县新闻资讯门户、圆点直播政经民生视频直播、卡乐图片原创图像影音数据库、郡县云桥县域融媒采集编播系统等，更多产品与服务，将顺应县域政务发展需求而继续推出。
-  //           </p>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   )
-  // }
   render() {
     return (
       <Row className="pass-platform-container">

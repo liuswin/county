@@ -7,9 +7,11 @@ import banner_03 from '../../assets/images/banner_03.png';
 import './index.less';
 import { menus } from './menus';
 import { videos } from './videos';
+import { previewImage } from 'antd/lib/upload/utils';
 
 const { Search } = Input;
 let playTimer = null;
+const previewPlayTime = 60;
 
 export default class Channel extends Component {
   constructor(props) {
@@ -19,9 +21,25 @@ export default class Channel extends Component {
     // }
   }
   handleMouseEnter(ev) {
-    var videoItem = ev.currentTarget;
-    videoItem.childNodes[1].childNodes[0].play();
-
+    let videoItem = ev.currentTarget;
+    let video = videoItem.childNodes[1].childNodes[0];
+    video.play();
+    console.log(video);
+    video.addEventListener(
+      'timeupdate',
+      () => {
+        var timeDisplay;
+        //用秒数来显示当前播放进度
+        timeDisplay = Math.floor(video.currentTime);
+        console.log(Math.floor(video.currentTime));
+        //当视频播放到 4s的时候做处理
+        if (timeDisplay === previewPlayTime) {
+          //处理代码
+          !video.paused && video.pause();
+        }
+      },
+      false
+    );
   }
   handleMouseLeave(ev) {
     var videoItem = ev.currentTarget;
@@ -36,8 +54,8 @@ export default class Channel extends Component {
         renderItem={item => (
           <List.Item
             key={item.id}
-            onMouseEnter={(ev) => this.handleMouseEnter(ev)}
-            onMouseLeave={(ev) => this.handleMouseLeave(ev)}
+            onMouseEnter={ev => this.handleMouseEnter(ev)}
+            onMouseLeave={ev => this.handleMouseLeave(ev)}
             extra={
               <video
                 className="video-component"
